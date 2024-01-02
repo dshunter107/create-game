@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import org.gamehunter.creategame.interfaces.observer.Observer;
 import org.gamehunter.creategame.interfaces.observer.Subject;
 import org.gamehunter.creategame.interfaces.registry.AbstractRegistrant;
-import org.gamehunter.creategame.interfaces.registry.Registrant;
 
 import lombok.Getter;
 
 @Getter
-public abstract class AbstractLocation extends AbstractRegistrant implements Observer, Location, Registrant {
+public abstract class AbstractLocation extends AbstractRegistrant implements Location {
 
     private ArrayList<Observer> address;
     private ArrayList<Observer> addressOfThingsInThisLocation;

@@ -6,6 +6,7 @@ import org.gamehunter.creategame.constants.GameAreaName;
 import org.gamehunter.creategame.exceptions.InvalidNumberException;
 import org.gamehunter.creategame.interfaces.factory.Product;
 import org.gamehunter.creategame.locations.GameLocation;
+import org.gamehunter.creategame.objects.characteristics.Characteristic;
 import org.gamehunter.creategame.objects.characteristics.ConcreteCharacteristic;
 import org.gamehunter.creategame.values.ArbitraryValue;
 import org.gamehunter.creategame.values.IntegerValue;
@@ -29,7 +30,7 @@ public class FactoryTest {
 
         for (int i = 1; i < 11; i++) {
             for (String s : suits) {
-                ArrayList<ConcreteCharacteristic> characteristics = new ArrayList<>();
+                ArrayList<Characteristic> characteristics = new ArrayList<>();
                 characteristics.add(new ConcreteCharacteristic("Number", new IntegerValue(i)));
                 characteristics.add(new ConcreteCharacteristic("Suit", new ArbitraryValue<String>(s)));
                 String numberName = this.numberName(i);

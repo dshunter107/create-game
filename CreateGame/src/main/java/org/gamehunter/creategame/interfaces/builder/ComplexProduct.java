@@ -2,12 +2,11 @@ package org.gamehunter.creategame.interfaces.builder;
 
 import java.util.ArrayList;
 
+import org.gamehunter.creategame.interfaces.prototype.ComplexPartPrototype;
+
 public interface ComplexProduct {
 
-    ArrayList<ComplexProductPart> getSections();
+    ArrayList<ComplexPartPrototype> getSections();
 
-    ArrayList<ComplexProductPart> getConnections();
-
-    void addComplexProductInfoToPart(ComplexProductPart part);
-
+    ArrayList<ComplexPartPrototype> getConnections();
 }

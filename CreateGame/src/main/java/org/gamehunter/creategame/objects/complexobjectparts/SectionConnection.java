@@ -18,7 +18,7 @@ public class SectionConnection extends AbstractComplexGameObjectPart implements 
     @Override
     public void addThisPartToProduct(ComplexProduct complexProduct) {
         complexProduct.getConnections().add(this);
-        complexProduct.addComplexProductInfoToPart(this);
+        // complexProduct.addComplexProductInfoToPart(this);
     }
 
     @Override

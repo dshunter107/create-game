@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import org.gamehunter.creategame.interfaces.builder.ComplexProduct;
 import org.gamehunter.creategame.interfaces.connection.Connectable;
-import org.gamehunter.creategame.locations.Location;
+import org.gamehunter.creategame.interfaces.prototype.ComplexPartPrototype;
+import org.gamehunter.creategame.locations.SectionLocation;
 import org.gamehunter.creategame.objects.characteristics.Characteristic;
 import org.gamehunter.creategame.objects.complexobjects.ComplexGameObject;
 
@@ -14,19 +15,20 @@ import lombok.Setter;
 @Getter
 public class ConcreteSection extends AbstractComplexGameObjectPart implements Section, Connectable {
     private ArrayList<Section> connectedSections;
-    private @Setter ArrayList<Location> sectionLocations;
+    private @Setter ArrayList<SectionLocation> sectionLocations;
+    private ArrayList<Characteristic> characteristics;
 
     public ConcreteSection() {
-        this.initializeParts();
+        this.initializePart();
     }
 
     public ConcreteSection(ComplexGameObject cgo) {
         super(cgo);
-        this.initializeParts();
+        this.initializePart();
 
     }
 
-    private void initializeParts() {
+    private void initializePart() {
         this.connectedSections = new ArrayList<>();
         this.sectionLocations = new ArrayList<>();
     }
@@ -49,11 +51,16 @@ public class ConcreteSection extends AbstractComplexGameObjectPart implements Se
     @Override
     public void addThisPartToProduct(ComplexProduct complexProduct) {
         complexProduct.getSections().add(this);
-        complexProduct.addComplexProductInfoToPart(this);
     }
 
     @Override
     public boolean isValid(ComplexProduct complexProduct) {
         return true;
+    }
+
+    @Override
+    public ComplexPartPrototype createClone() {
+        this.clone = new ConcreteSection();
+        return super.createClone();
     }
 }

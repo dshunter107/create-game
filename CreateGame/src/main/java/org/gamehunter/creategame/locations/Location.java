@@ -7,7 +7,7 @@ import org.gamehunter.creategame.interfaces.observer.Observer;
 import org.gamehunter.creategame.interfaces.observer.Subject;
 import org.gamehunter.creategame.interfaces.registry.Registrant;
 
-public interface Location extends Registrant {
+public interface Location extends Registrant, Observer {
 
     ArrayList<Subject> getObjectsInThisLocation();
 

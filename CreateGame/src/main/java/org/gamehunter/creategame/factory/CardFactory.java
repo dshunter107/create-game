@@ -3,9 +3,9 @@ package org.gamehunter.creategame.factory;
 import java.util.ArrayList;
 
 import org.gamehunter.creategame.interfaces.factory.Product;
-import org.gamehunter.creategame.locations.GameLocation;
+import org.gamehunter.creategame.locations.Location;
 import org.gamehunter.creategame.objects.SimpleCard;
-import org.gamehunter.creategame.objects.characteristics.ConcreteCharacteristic;
+import org.gamehunter.creategame.objects.characteristics.Characteristic;
 
 public class CardFactory extends AbstractFactory {
 
@@ -14,7 +14,7 @@ public class CardFactory extends AbstractFactory {
     }
 
     @Override
-    public Product create(GameLocation loc, ArrayList<ConcreteCharacteristic> characteristics) {
+    public Product create(Location loc, ArrayList<Characteristic> characteristics) {
         SimpleCard card = new SimpleCard(loc);
         return super.addCharacteristics(card, characteristics);
     }

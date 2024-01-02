@@ -6,7 +6,7 @@ import java.util.HashMap;
 import org.gamehunter.creategame.interfaces.builder.Builder;
 import org.gamehunter.creategame.interfaces.builder.ComplexProduct;
 import org.gamehunter.creategame.interfaces.builder.ComplexProductPart;
-import org.gamehunter.creategame.locations.GameLocation;
+import org.gamehunter.creategame.locations.Location;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,11 +16,11 @@ public abstract class AbstractBuilder implements Builder {
     protected ComplexProduct complexProduct;
     private @Setter HashMap<String, ArrayList<ComplexProductPart>> allPotentialParts;
 
-    public AbstractBuilder(GameLocation inLocation) {
+    public AbstractBuilder(Location inLocation) {
         this.complexProduct = this.instantiateProduct(inLocation);
     }
 
-    protected abstract ComplexProduct instantiateProduct(GameLocation inLocation);
+    protected abstract ComplexProduct instantiateProduct(Location inLocation);
 
 
     @Override

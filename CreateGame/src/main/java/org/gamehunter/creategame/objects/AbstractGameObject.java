@@ -3,27 +3,29 @@ package org.gamehunter.creategame.objects;
 import java.util.ArrayList;
 
 import org.gamehunter.creategame.constants.GameAreaName;
-import org.gamehunter.creategame.interfaces.factory.Product;
 import org.gamehunter.creategame.interfaces.observer.Observer;
-import org.gamehunter.creategame.interfaces.observer.Subject;
+import org.gamehunter.creategame.interfaces.prototype.Prototype;
 import org.gamehunter.creategame.interfaces.registry.AbstractRegistrant;
 import org.gamehunter.creategame.locations.Location;
+import org.gamehunter.creategame.objects.characteristics.Characteristic;
 import org.gamehunter.creategame.objects.characteristics.ConcreteCharacteristic;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 public abstract class AbstractGameObject extends AbstractRegistrant
-implements SimpleGameObject, Subject, Product {
+implements SimpleGameObject {
 
+    private @Setter int cloneNumber;
     private Location inLocation;
-    private ArrayList<Observer> address;
-    public ArrayList<ConcreteCharacteristic> characteristics;
+    private @Setter Prototype clone;
+    private ArrayList<Observer> address = new ArrayList<>();
+    public ArrayList<Characteristic> characteristics = new ArrayList<>();
 
     protected AbstractGameObject(Location inLocation) {
         this.inLocation = inLocation;
-        this.characteristics = new ArrayList<>();
-        this.address = new ArrayList<>();
+        this.cloneNumber = 1;
         this.updateAddress();
         this.notifyObservers();
     }
@@ -71,7 +73,7 @@ implements SimpleGameObject, Subject, Product {
     }
 
     @Override
-    public AbstractGameObject addCharacteristic(ConcreteCharacteristic c) {
+    public AbstractGameObject addCharacteristic(Characteristic c) {
         this.characteristics.add(c);
         return this;
     }
@@ -79,7 +81,7 @@ implements SimpleGameObject, Subject, Product {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (ConcreteCharacteristic c : this.characteristics) {
+        for (Characteristic c : this.characteristics) {
             sb.append(c.toString());
         }
         return "GameItem [ characteristics="
@@ -89,6 +91,15 @@ implements SimpleGameObject, Subject, Product {
     @Override
     public GameAreaName getArea() {
         return this.inLocation.getArea();
+    }
+
+    @Override
+    public Prototype createClone() {
+        this.clone.setCloneNumber(this.cloneNumber + 1);
+        for (Characteristic c : this.characteristics) {
+            this.clone.addCharacteristic(new ConcreteCharacteristic(c.getName(), c.getValue()));
+        }
+        return this.clone;
     }
 
 }

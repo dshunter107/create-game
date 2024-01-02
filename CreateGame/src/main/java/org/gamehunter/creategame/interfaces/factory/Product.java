@@ -1,7 +1,11 @@
 package org.gamehunter.creategame.interfaces.factory;
 
-import org.gamehunter.creategame.objects.characteristics.ConcreteCharacteristic;
+import java.util.ArrayList;
+
+import org.gamehunter.creategame.objects.characteristics.Characteristic;
 
 public interface Product {
-    Product addCharacteristic(ConcreteCharacteristic characteristics);
+    Product addCharacteristic(Characteristic characteristic);
+
+    ArrayList<Characteristic> getCharacteristics();
 }

@@ -2,11 +2,11 @@ package org.gamehunter.creategame.interfaces.factory;
 
 import java.util.ArrayList;
 
-import org.gamehunter.creategame.locations.GameLocation;
-import org.gamehunter.creategame.objects.characteristics.ConcreteCharacteristic;
+import org.gamehunter.creategame.locations.Location;
+import org.gamehunter.creategame.objects.characteristics.Characteristic;
 
 public interface Factory {
-    Product create(GameLocation loc, ArrayList<ConcreteCharacteristic> characteristics);
+    Product create(Location loc, ArrayList<Characteristic> characteristics);
 
-    Product addCharacteristics(Product product, ArrayList<ConcreteCharacteristic> characteristics);
+    Product addCharacteristics(Product product, ArrayList<Characteristic> characteristics);
 }

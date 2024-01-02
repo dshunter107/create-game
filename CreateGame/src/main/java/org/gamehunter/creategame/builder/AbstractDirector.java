@@ -7,7 +7,7 @@ import org.gamehunter.creategame.interfaces.builder.Builder;
 import org.gamehunter.creategame.interfaces.builder.ComplexProduct;
 import org.gamehunter.creategame.interfaces.builder.ComplexProductPart;
 import org.gamehunter.creategame.interfaces.builder.Director;
-import org.gamehunter.creategame.locations.GameLocation;
+import org.gamehunter.creategame.locations.Location;
 
 public abstract class AbstractDirector implements Director {
     public Builder builder;
@@ -16,7 +16,7 @@ public abstract class AbstractDirector implements Director {
     }
 
     @Override
-    public abstract Director createBuilder(GameLocation inLocation);
+    public abstract Director createBuilder(Location inLocation);
 
     @Override
     public ComplexProduct getProduct() {

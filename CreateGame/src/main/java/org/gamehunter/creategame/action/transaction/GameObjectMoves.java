@@ -1,7 +1,6 @@
 package org.gamehunter.creategame.action.transaction;
 
 import org.gamehunter.creategame.exceptions.NoLocationRuntimeException;
-import org.gamehunter.creategame.locations.GameLocation;
 import org.gamehunter.creategame.locations.Location;
 import org.gamehunter.creategame.objects.AbstractGameObject;
 
@@ -13,7 +12,7 @@ public class GameObjectMoves implements Transaction {
     private Location oldLocation;
     private Location newLocation;
 
-    public GameObjectMoves(AbstractGameObject item, GameLocation newLocation) {
+    public GameObjectMoves(AbstractGameObject item, Location newLocation) {
         this.item = item;
         this.oldLocation = item.getInLocation();
         this.newLocation = newLocation;

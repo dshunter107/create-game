@@ -1,7 +1,7 @@
 package org.gamehunter.creategame.builder;
 
 import org.gamehunter.creategame.interfaces.builder.Director;
-import org.gamehunter.creategame.locations.GameLocation;
+import org.gamehunter.creategame.locations.Location;
 
 public class ComplexBoardDirector extends AbstractDirector {
 
@@ -10,7 +10,7 @@ public class ComplexBoardDirector extends AbstractDirector {
     }
 
     @Override
-    public Director createBuilder(GameLocation inLocation) {
+    public Director createBuilder(Location inLocation) {
         this.builder = new ComplexBoardBuilder(inLocation);
         return this;
     }
