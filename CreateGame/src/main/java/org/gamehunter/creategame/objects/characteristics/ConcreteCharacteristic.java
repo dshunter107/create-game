@@ -1,6 +1,6 @@
 package org.gamehunter.creategame.objects.characteristics;
 
-import org.gamehunter.creategame.values.Values;
+import org.gamehunter.creategame.values.Value;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +10,8 @@ import lombok.Setter;
  * object
  */
 public @Getter @Setter class ConcreteCharacteristic implements Characteristic {
-    public String name;
-    public Values value;
+    protected String name;
+    protected Value value;
 
     /**
      * Characteristic represents a name & value combination to describe a game
@@ -20,7 +20,7 @@ public @Getter @Setter class ConcreteCharacteristic implements Characteristic {
      * @param name
      * @param value
      */
-    public ConcreteCharacteristic(String name, Values value) {
+    public ConcreteCharacteristic(String name, Value value) {
         this.name = name;
         this.value = value;
     }
@@ -28,6 +28,11 @@ public @Getter @Setter class ConcreteCharacteristic implements Characteristic {
     @Override
     public String toString() {
         return "Characteristic [name=" + this.name + ", value=" + this.value + "]";
+    }
+
+    @Override
+    public Characteristic createClone() {
+        return new ConcreteCharacteristic(this.name, this.value.createClone());
     }
 
 }

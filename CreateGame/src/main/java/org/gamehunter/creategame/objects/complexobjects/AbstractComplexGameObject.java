@@ -2,9 +2,9 @@ package org.gamehunter.creategame.objects.complexobjects;
 
 import java.util.ArrayList;
 
+import org.gamehunter.creategame.interfaces.builder.ComplexProduct;
+import org.gamehunter.creategame.interfaces.builder.ComplexProductPart;
 import org.gamehunter.creategame.interfaces.builder.Director;
-import org.gamehunter.creategame.interfaces.prototype.ComplexPartPrototype;
-import org.gamehunter.creategame.interfaces.prototype.ComplexPrototype;
 import org.gamehunter.creategame.locations.Location;
 import org.gamehunter.creategame.objects.AbstractGameObject;
 import org.gamehunter.creategame.objects.complexobjectparts.Section;
@@ -15,10 +15,10 @@ import lombok.Setter;
 @Getter
 public abstract class AbstractComplexGameObject extends AbstractGameObject
 implements ComplexGameObject {
-    private ArrayList<ComplexPartPrototype> sections;
-    private ArrayList<ComplexPartPrototype> connections;
+    private ArrayList<ComplexProductPart> sections;
+    private ArrayList<ComplexProductPart> connections;
     private @Setter Director director;
-    private @Setter ComplexPrototype complexClone;
+    private @Setter ComplexProduct complexClone;
 
     public AbstractComplexGameObject(Location inLocation) {
         super(inLocation);
@@ -37,11 +37,11 @@ implements ComplexGameObject {
     }
 
     @Override
-    public ComplexPrototype createClone() {
-        for (ComplexPartPrototype section : this.sections) {
+    public ComplexProduct createClone() {
+        for (ComplexProductPart section : this.sections) {
             section.createClone().addThisPartToProduct(this.complexClone);
         }
-        for (ComplexPartPrototype connection : this.connections) {
+        for (ComplexProductPart connection : this.connections) {
             connection.createClone().addThisPartToProduct(this.complexClone);
         }
         super.setClone(this.complexClone);

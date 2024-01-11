@@ -2,14 +2,14 @@ package org.gamehunter.creategame.objects.complexobjects;
 
 import java.util.ArrayList;
 
-import org.gamehunter.creategame.interfaces.prototype.ComplexPartPrototype;
-import org.gamehunter.creategame.interfaces.prototype.ComplexPrototype;
+import org.gamehunter.creategame.interfaces.builder.ComplexProduct;
+import org.gamehunter.creategame.interfaces.builder.ComplexProductPart;
 import org.gamehunter.creategame.objects.SimpleGameObject;
 import org.gamehunter.creategame.objects.complexobjectparts.Section;
 
-public interface ComplexGameObject extends SimpleGameObject, ComplexPrototype {
+public interface ComplexGameObject extends SimpleGameObject, ComplexProduct {
     @Override
-    ArrayList<ComplexPartPrototype> getSections();
+    ArrayList<ComplexProductPart> getSections();
 
     /*
      * Creates a one-way connection from 1 section to another

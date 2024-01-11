@@ -1,7 +1,6 @@
 package org.gamehunter.creategame.objects;
 
 import org.gamehunter.creategame.constants.GameObjectTypeName;
-import org.gamehunter.creategame.interfaces.prototype.Prototype;
 import org.gamehunter.creategame.locations.Location;
 
 import lombok.Getter;
@@ -15,8 +14,10 @@ public class SimpleBoard extends AbstractGameObject {
     }
 
     @Override
-    public Prototype createClone() {
-        this.setClone(new SimpleBoard(this.getInLocation()));
-        return super.createClone();
+    public SimpleBoard createClone() {
+        SimpleBoard cloneBoard = new SimpleBoard(this.getInLocation());
+        this.setClone(cloneBoard);
+        super.createClone();
+        return cloneBoard;
     }
 }

@@ -2,7 +2,6 @@ package org.gamehunter.creategame.objects;
 
 import org.gamehunter.creategame.constants.GameObjectTypeName;
 import org.gamehunter.creategame.interfaces.objects.Card;
-import org.gamehunter.creategame.interfaces.prototype.Prototype;
 import org.gamehunter.creategame.locations.Location;
 
 import lombok.Getter;
@@ -34,8 +33,10 @@ public class SimpleCard extends AbstractGameObject implements Card {
     }
 
     @Override
-    public Prototype createClone() {
-        this.setClone(new SimpleCard(this.getInLocation()));
-        return super.createClone();
+    public SimpleCard createClone() {
+        SimpleCard cloneCard = new SimpleCard(this.getInLocation());
+        this.setClone(cloneCard);
+        super.createClone();
+        return cloneCard;
     }
 }

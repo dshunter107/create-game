@@ -1,8 +1,8 @@
 package org.gamehunter.creategame.objects.complexobjects;
 
 import org.gamehunter.creategame.constants.GameObjectTypeName;
+import org.gamehunter.creategame.interfaces.builder.ComplexProduct;
 import org.gamehunter.creategame.interfaces.objects.Card;
-import org.gamehunter.creategame.interfaces.prototype.ComplexPrototype;
 import org.gamehunter.creategame.locations.Location;
 
 import lombok.Getter;
@@ -22,7 +22,7 @@ public class ComplexCard extends AbstractComplexGameObject implements Card {
     }
 
     @Override
-    public ComplexPrototype createClone() {
+    public ComplexProduct createClone() {
         this.setComplexClone(new ComplexBoard(this.getInLocation()));
         return super.createClone();
     }

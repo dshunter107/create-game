@@ -9,7 +9,7 @@ import org.gamehunter.creategame.locations.GameLocation;
 import org.gamehunter.creategame.objects.characteristics.Characteristic;
 import org.gamehunter.creategame.objects.characteristics.ConcreteCharacteristic;
 import org.gamehunter.creategame.values.ArbitraryValue;
-import org.gamehunter.creategame.values.IntegerValue;
+import org.gamehunter.creategame.values.DoubleValue;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -31,7 +31,7 @@ public class FactoryTest {
         for (int i = 1; i < 11; i++) {
             for (String s : suits) {
                 ArrayList<Characteristic> characteristics = new ArrayList<>();
-                characteristics.add(new ConcreteCharacteristic("Number", new IntegerValue(i)));
+                characteristics.add(new ConcreteCharacteristic("Number", new DoubleValue(i)));
                 characteristics.add(new ConcreteCharacteristic("Suit", new ArbitraryValue<String>(s)));
                 String numberName = this.numberName(i);
                 characteristics.add(new ConcreteCharacteristic("Number Name", new ArbitraryValue<String>(numberName)));

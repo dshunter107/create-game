@@ -2,11 +2,14 @@ package org.gamehunter.creategame.interfaces.builder;
 
 import java.util.ArrayList;
 
-import org.gamehunter.creategame.interfaces.prototype.ComplexPartPrototype;
+import org.gamehunter.creategame.interfaces.factory.Product;
 
-public interface ComplexProduct {
+public interface ComplexProduct extends Product {
 
-    ArrayList<ComplexPartPrototype> getSections();
+    ArrayList<ComplexProductPart> getSections();
 
-    ArrayList<ComplexPartPrototype> getConnections();
+    ArrayList<ComplexProductPart> getConnections();
+
+    @Override
+    ComplexProduct createClone();
 }

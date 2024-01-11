@@ -1,10 +1,5 @@
 package org.gamehunter.creategame.values;
 
-public class NoValue implements Values {
-    public static final boolean HAS_VALUE = false;
+public class NoValue {
 
-    @Override
-    public boolean getHasValue() {
-        return HAS_VALUE;
-    }
 }

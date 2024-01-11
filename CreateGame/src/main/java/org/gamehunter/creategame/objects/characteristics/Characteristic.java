@@ -1,13 +1,17 @@
 package org.gamehunter.creategame.objects.characteristics;
 
-import org.gamehunter.creategame.values.Values;
+import org.gamehunter.creategame.interfaces.prototype.Prototype;
+import org.gamehunter.creategame.values.Value;
 
-public interface Characteristic {
-    public String getName();
+public interface Characteristic extends Prototype {
+    String getName();
 
-    public void setName(String name);
+    void setName(String name);
 
-    public Values getValue();
+    Value getValue();
 
-    public void setValue(Values value);
+    void setValue(Value value);
+
+    @Override
+    Characteristic createClone();
 }

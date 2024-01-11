@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 import org.gamehunter.creategame.constants.GameAreaName;
 import org.gamehunter.creategame.interfaces.builder.ComplexProduct;
-import org.gamehunter.creategame.interfaces.factory.Product;
-import org.gamehunter.creategame.interfaces.prototype.ComplexPartPrototype;
+import org.gamehunter.creategame.interfaces.builder.ComplexProductPart;
 import org.gamehunter.creategame.interfaces.registry.AbstractRegistrant;
 import org.gamehunter.creategame.objects.characteristics.Characteristic;
 import org.gamehunter.creategame.objects.complexobjects.ComplexGameObject;
@@ -15,10 +14,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-public abstract class AbstractComplexGameObjectPart extends AbstractRegistrant implements ComplexPartPrototype {
+public abstract class AbstractComplexGameObjectPart extends AbstractRegistrant implements ComplexProductPart {
     protected @Setter ArrayList<Characteristic> characteristics;
     protected @Setter ComplexGameObject inGameObject;
-    protected ComplexPartPrototype clone;
+    protected ComplexProductPart clone;
     private @Setter int cloneNumber;
 
     public AbstractComplexGameObjectPart() {
@@ -56,17 +55,31 @@ public abstract class AbstractComplexGameObjectPart extends AbstractRegistrant i
     }
 
     @Override
-    public Product addCharacteristic(Characteristic characteristic) {
+    public ComplexProductPart addCharacteristic(Characteristic characteristic) {
         this.characteristics.add(characteristic);
         return this;
     }
 
     @Override
-    public ComplexPartPrototype createClone() {
+    public ComplexProductPart createClone() {
         this.clone.setCloneNumber(this.cloneNumber + 1);
         for (Characteristic c : this.characteristics) {
             this.clone.addCharacteristic(c);
         }
         return this.clone;
     }
+
+    @Override
+    public ArrayList<Characteristic> getCharacteristics(String name) {
+        ArrayList<Characteristic> theseCharacteristics = new ArrayList<>();
+        if(name != null) {
+            for(Characteristic c: this.characteristics) {
+                if (name.equals(c.getName())) {
+                    theseCharacteristics.add(c);
+                }
+            }
+        }
+        return theseCharacteristics;
+    }
+
 }

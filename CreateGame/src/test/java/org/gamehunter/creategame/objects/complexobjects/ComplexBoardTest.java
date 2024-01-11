@@ -17,7 +17,7 @@ import org.gamehunter.creategame.objects.complexobjectparts.Section;
 import org.gamehunter.creategame.objects.complexobjectparts.SectionConnection;
 import org.gamehunter.creategame.registry.RegistrySingleton;
 import org.gamehunter.creategame.values.ArbitraryValue;
-import org.gamehunter.creategame.values.IntegerValue;
+import org.gamehunter.creategame.values.DoubleValue;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -52,8 +52,8 @@ public class ComplexBoardTest {
 
         for (int rowNumber = 1; rowNumber <= dimensions; rowNumber++) {
             for (int colNumber = 1; colNumber <= dimensions; colNumber++) {
-                Characteristic row = new ConcreteCharacteristic("row", new IntegerValue(rowNumber));
-                Characteristic col = new ConcreteCharacteristic("column", new IntegerValue(colNumber));
+                Characteristic row = new ConcreteCharacteristic("row", new DoubleValue(rowNumber));
+                Characteristic col = new ConcreteCharacteristic("column", new DoubleValue(colNumber));
                 Characteristic name = new ConcreteCharacteristic("name",
                         new ArbitraryValue<String>(this.createName(rowNumber, colNumber)));
                 ArrayList<Characteristic> characteristics = new ArrayList<>();

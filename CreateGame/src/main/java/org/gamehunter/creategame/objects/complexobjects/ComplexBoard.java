@@ -1,7 +1,6 @@
 package org.gamehunter.creategame.objects.complexobjects;
 
 import org.gamehunter.creategame.constants.GameObjectTypeName;
-import org.gamehunter.creategame.interfaces.prototype.ComplexPrototype;
 import org.gamehunter.creategame.locations.Location;
 
 import lombok.Getter;
@@ -15,9 +14,11 @@ public class ComplexBoard extends AbstractComplexGameObject {
     }
 
     @Override
-    public ComplexPrototype createClone() {
-        this.setComplexClone(new ComplexBoard(this.getInLocation()));
-        return super.createClone();
+    public ComplexBoard createClone() {
+        ComplexBoard boardClone = new ComplexBoard(this.getInLocation());
+        this.setComplexClone(boardClone);
+        super.createClone();
+        return boardClone;
     }
 
 }

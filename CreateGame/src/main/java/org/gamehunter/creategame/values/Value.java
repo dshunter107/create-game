@@ -1,33 +1,19 @@
 package org.gamehunter.creategame.values;
 
-import lombok.Getter;
-import lombok.Setter;
+import org.gamehunter.creategame.interfaces.prototype.Prototype;
+import org.gamehunter.creategame.objects.upgrades.executions.ExecutionEnvironment;
 
-public abstract class Value<V> implements Values {
-    public static final boolean HAS_VALUE = true;
+/**
+ * Allows for different types of values. Types: (1) NoValue (2) BooleanValue (3)
+ * IntegerValue (4) ArbitraryValue
+ */
+public interface Value extends Prototype {
 
-    @Getter
-    @Setter
-    private V value;
+    <V> V getValue();
 
-    Value(V value) {
-        this.value = value;
-    }
-
-    @Override
-    public boolean getHasValue() {
-        return HAS_VALUE;
-    }
-
-    public boolean valuesMatch(Value<V> otherValue) {
-        return this.value == otherValue.value;
-    }
-
-    public abstract Integer compareValues(Value<V> otherValue);
+    Value operation(Value secondValue, ExecutionEnvironment execution);
 
     @Override
-    public String toString() {
-        return "Value [value=" + this.value + "]";
-    }
+    Value createClone();
 
 }
